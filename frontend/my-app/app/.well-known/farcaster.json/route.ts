@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       version: "1",
       name: "Todo List Mini App",
       homeUrl: `${baseUrl}`,
-      iconUrl: "https://postimg.cc/wRp7c7fr",
+      iconUrl: "https://i.postimg.cc/wMtLzNh9/Pngtree-to-do-list-icon-cartoon-5080528.png",
       splashImageUrl: `${baseUrl}/splash.png`,
       splashBackgroundColor: "#000000",
       webhookUrl: `${baseUrl}/api/webhook`,

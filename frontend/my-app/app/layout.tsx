@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'fc:miniapp': JSON.stringify({
         version: 'next',
-        imageUrl: 'https://postimg.cc/wRp7c7fr',
+        imageUrl: 'https://i.postimg.cc/wMtLzNh9/Pngtree-to-do-list-icon-cartoon-5080528.png',
         button: {
           title: `Launch TodoApp`,
           action: {
