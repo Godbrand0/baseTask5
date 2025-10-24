@@ -4,16 +4,18 @@ export async function GET(request: NextRequest) {
   const baseUrl = "https://base-task5-dvgq.vercel.app/";
   
   const manifest = {
-    accountAssociation: {
-      header: "",
-      payload: "",
-      signature: ""
-    },
+      "accountAssociation": {
+    "header": "eyJmaWQiOjk3NDcxNCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDk5NTU5OGM3Mjg1YkY4MDRFNzAwMzVkOEQxMkM4ZDY4NzM2NDcwQjAifQ",
+    "payload": "eyJkb21haW4iOiJiYXNlLXRhc2s1LWR2Z3EudmVyY2VsLmFwcCJ9",
+    "signature": "kl6HgA0FQYsRdN3xK+EM99jUhCDa4/SPn4cp1uu97Qx0wbQAIKd8oQjuH1V4C8KxWiv3LebURD0wyXKdeGsQfBw="
+  },
+
+    
     miniapp: {
       version: "1",
       name: "Todo List Mini App",
       homeUrl: `${baseUrl}`,
-      iconUrl: `${baseUrl}/icon.png`,
+      iconUrl: "https://postimg.cc/wRp7c7fr",
       splashImageUrl: `${baseUrl}/splash.png`,
       splashBackgroundColor: "#000000",
       webhookUrl: `${baseUrl}/api/webhook`,
