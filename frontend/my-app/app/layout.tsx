@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
             type: 'launch_miniapp',
             name: 'Todo List Mini App',
             url: 'https://base-task5-dvgq.vercel.app/',
-            splashImageUrl: 'https://base-task5-dvgq.vercel.app/file.svg',
+            splashImageUrl: '',
             splashBackgroundColor: '#000000',
           },
         },
