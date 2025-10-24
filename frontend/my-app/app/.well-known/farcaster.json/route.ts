@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
       signature: ""
     },
     baseBuilder: {
-      allowedAddresses: [""] // Will be updated with your Base Account address
+      allowedAddresses: ["0x4665A823a7EC3BaB3575B51F0Fccead5916c2c93"] // Will be updated with your Base Account address
     },
     miniapp: {
       version: "1",
