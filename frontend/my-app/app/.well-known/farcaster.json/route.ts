@@ -10,7 +10,9 @@ export async function GET(request: NextRequest) {
     "signature": "kl6HgA0FQYsRdN3xK+EM99jUhCDa4/SPn4cp1uu97Qx0wbQAIKd8oQjuH1V4C8KxWiv3LebURD0wyXKdeGsQfBw="
   },
 
-    
+     "baseBuilder": {
+    "allowedAddresses": ["0x4665A823a7EC3BaB3575B51F0Fccead5916c2c93"] // add your Base Account address here
+  },
     miniapp: {
       version: "1",
       name: "Todo List Mini App",
