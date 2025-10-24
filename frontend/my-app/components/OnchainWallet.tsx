@@ -49,7 +49,7 @@ export function OnchainWallet() {
   if (isConnected && isCorrectNetwork) {
     const handleDisconnect = () => {
       disconnect();
-      router.push("/landing");
+      router.push("/");
     };
 
     return (
