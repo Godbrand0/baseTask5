@@ -20,14 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'fc:miniapp': JSON.stringify({
         version: 'next',
-        imageUrl: 'https://your-app.com/embed-image',
+        imageUrl: 'https://postimg.cc/wRp7c7fr',
         button: {
-          title: `Launch Todo List App`,
+          title: `Launch TodoApp`,
           action: {
             type: 'launch_miniapp',
             name: 'Todo List Mini App',
             url: 'https://base-task5-dvgq.vercel.app/',
-            splashImageUrl: 'https://your-app.com/splash-image',
+            splashImageUrl: 'https://base-task5-dvgq.vercel.app/file.svg',
             splashBackgroundColor: '#000000',
           },
         },
