@@ -1,16 +1,13 @@
 import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  const baseUrl ="https://base-sepolia-rpc.publicnode.com";
+  const baseUrl = "https://base-task5-dvgq.vercel.app/";
   
   const manifest = {
     accountAssociation: {
       header: "",
       payload: "",
       signature: ""
-    },
-    baseBuilder: {
-      allowedAddresses: ["0x4665A823a7EC3BaB3575B51F0Fccead5916c2c93"] // Will be updated with your Base Account address
     },
     miniapp: {
       version: "1",
@@ -21,7 +18,7 @@ export async function GET(request: NextRequest) {
       splashBackgroundColor: "#000000",
       webhookUrl: `${baseUrl}/api/webhook`,
       subtitle: "Manage tasks on-chain",
-      description: "A todo list application built on Base Sepolia. Create, assign users, manage, and track your tasks with the power of base.",
+      description: "A simple todo list application built on Base. Create, assign users, manage, and track your tasks with the power of base.",
       screenshotUrls: [
         `${baseUrl}/screenshots/1.png`,
         `${baseUrl}/screenshots/2.png`,
@@ -32,7 +29,7 @@ export async function GET(request: NextRequest) {
       heroImageUrl: `${baseUrl}/hero.png`,
       tagline: "Task management on Base",
       ogTitle: "Todo List Mini App",
-      ogDescription: "A decentralized todo list application built on Base Sepolia. Manage your tasks on-chain.",
+      ogDescription: "A todo list application built on Base. Manage your tasks on-chain.",
       ogImageUrl: `${baseUrl}/og.png`,
       noindex: false
     }
