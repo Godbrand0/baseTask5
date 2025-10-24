@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useWeb3 } from "@/contexts/Web3Context";
 import { useTodoListContract, type TodoList, type TodoItem as TodoItemType } from "@/hooks/useTodoList";
 import { OnchainWallet } from "@/components/OnchainWallet";
+import { MiniAppWrapper } from "@/components/MiniAppWrapper";
 import { TodoListCard } from "@/components/TodoListCard";
 import { TodoListForm } from "@/components/TodoListForm";
 import { TodoItemForm } from "@/components/TodoItemForm";
@@ -572,7 +573,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <MiniAppWrapper>
+      <div className="min-h-screen bg-background flex flex-col">
       <header className={`${isConnected ? "header-compact" : ""} bg-card border-b border-border px-4 sm:px-6 transition-all duration-300`}>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
           <div className="flex items-center gap-3">
@@ -603,7 +605,8 @@ export default function Home() {
           Powered by <span className="text-primary font-semibold">Base</span> and <span className="text-primary font-semibold">OnchainKit</span>
         </p>
       </footer>
-    </div>
+      </div>
+    </MiniAppWrapper>
   );
 }
 
