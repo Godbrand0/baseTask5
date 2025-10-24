@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+  const baseUrl ="https://base-sepolia-rpc.publicnode.com";
   
   const manifest = {
     accountAssociation: {
