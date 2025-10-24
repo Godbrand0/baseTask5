@@ -28,17 +28,17 @@ export function getPriorityColor(priority: bigint): string {
   const priorityNum = Number(priority);
   switch (priorityNum) {
     case 1:
-      return "bg-falu_red-800 text-falu_red-600 border border-falu_red-400";
+      return "bg-falu_red-100 text-falu_red-800 border border-falu_red-300";
     case 2:
-      return "bg-falu_red-900 text-falu_red-700 border border-falu_red-300";
+      return "bg-falu_red-50 text-falu_red-700 border border-falu_red-200";
     case 3:
-      return "bg-peach-800 text-peach-300 border border-peach-400";
+      return "bg-peach-100 text-peach-800 border border-peach-300";
     case 4:
-      return "bg-lion-800 text-lion-500 border border-lion-300";
+      return "bg-lion-100 text-lion-800 border border-lion-300";
     case 5:
-      return "bg-lion-900 text-lion-600 border border-lion-200";
+      return "bg-lion-50 text-lion-700 border border-lion-200";
     default:
-      return "bg-brown-900 text-brown-600 border border-brown-300";
+      return "bg-brown-100 text-brown-800 border border-brown-300";
   }
 }
 

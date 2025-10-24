@@ -90,7 +90,7 @@ export function TodoItemForm({
       <CardContent className="p-4 sm:p-6">
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           <div className="space-y-2">
-            <label htmlFor="title" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+            <label htmlFor="title" className="text-sm font-semibold flex items-center gap-2">
               <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
@@ -109,7 +109,7 @@ export function TodoItemForm({
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="description" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+            <label htmlFor="description" className="text-sm font-semibold flex items-center gap-2">
               <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
               </svg>
@@ -128,7 +128,7 @@ export function TodoItemForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-2">
-              <label htmlFor="priority" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+              <label htmlFor="priority" className="text-sm font-semibold flex items-center gap-2">
                 <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -150,7 +150,7 @@ export function TodoItemForm({
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="dueDate" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+              <label htmlFor="dueDate" className="text-sm font-semibold flex items-center gap-2">
                 <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -168,7 +168,7 @@ export function TodoItemForm({
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="assignedTo" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+            <label htmlFor="assignedTo" className="text-sm font-semibold flex items-center gap-2">
               <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
@@ -186,7 +186,7 @@ export function TodoItemForm({
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="category" className="text-sm font-semibold flex items-center gap-2 text-bistre">
+            <label htmlFor="category" className="text-sm font-semibold flex items-center gap-2">
               <svg className="w-4 h-4 text-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
               </svg>

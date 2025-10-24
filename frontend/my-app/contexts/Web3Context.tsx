@@ -1,21 +1,24 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { useAccount, useConnect, useDisconnect, useSwitchChain, useChainId } from "wagmi";
-import { metaMask } from "wagmi/connectors";
-import { http, createConfig } from "wagmi";
+import { useAccount, useConnect, useDisconnect, useSwitchChain, useChainId, createConfig, http } from "wagmi";
 import { baseSepolia } from "wagmi/chains";
+import { coinbaseWallet } from "wagmi/connectors";
 
-// Create a function to get the config to avoid passing non-serializable objects
-function getWagmiConfig() {
-  return createConfig({
+// Create wagmi config
+export const getWagmiConfig = () =>
+  createConfig({
     chains: [baseSepolia],
-    connectors: [metaMask()],
+    connectors: [
+      coinbaseWallet({
+        appName: "Todo List dApp",
+        appLogoUrl: "https://example.com/logo.png", // Replace with your app's logo
+      }),
+    ],
     transports: {
       [baseSepolia.id]: http(),
     },
   });
-}
 
 
 interface Web3ContextType {
@@ -97,6 +100,3 @@ export function Web3Provider({ children }: Web3ProviderProps) {
     </Web3Context.Provider>
   );
 }
-
-// Export the function instead of the config object
-export { getWagmiConfig };

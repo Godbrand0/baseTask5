@@ -266,8 +266,8 @@ export const TODO_LIST_ABI = [
   }
 ] as const;
 
-export const TODO_LIST_ADDRESS = "0xF3a6320824843755671D16fEc765d21F83e126B9" as const;
+export const TODO_LIST_ADDRESS = (process.env.NEXT_PUBLIC_TODO_LIST_ADDRESS || "0xF3a6320824843755671D16fEc765d21F83e126B9") as `0x${string}`;
 
 export const BASE_SEPOLIA_CHAIN_ID = 84532 as const;
 
-export const BASE_SEPOLIA_RPC_URL = "https://base-sepolia.g.alchemy.com/v2/MXMWpKnU54iZbtyCDZhwRdwpMEyRoq5e" as const;
+export const BASE_SEPOLIA_RPC_URL = "https://base-sepolia-rpc.publicnode.com" as const;

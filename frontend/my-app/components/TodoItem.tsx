@@ -75,7 +75,7 @@ export function TodoItem({
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-start justify-between gap-2">
-                <h3 className={`text-base text-white sm:text-lg font-bold ${todoItem.isCompleted ? "line-through text-brown-500" : "text-bistre"}`}>
+                <h3 className={`text-base sm:text-lg font-bold ${todoItem.isCompleted ? "line-through text-brown-500" : "text-bistre"}`}>
                   {todoItem.title}
                 </h3>
                 <span className={`status-badge flex-shrink-0 ${getPriorityColor(todoItem.priority)}`}>
@@ -104,7 +104,7 @@ export function TodoItem({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className="truncate">Due: {formatDateTime(todoItem.dueDate)}</span>
-                {isOverdue && <span className="ml-1 px-2 py-0.5 bg-falu_red-600 text-falu_red-900 rounded text-xs font-bold">Overdue</span>}
+                {isOverdue && <span className="ml-1 px-2 py-0.5 bg-falu_red-600 text-white rounded text-xs font-bold">Overdue</span>}
               </div>
             )}
             {todoItem.isCompleted && todoItem.completedAt > 0 && (

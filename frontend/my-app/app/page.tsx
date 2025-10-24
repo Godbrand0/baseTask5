@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useWeb3 } from "@/contexts/Web3Context";
 import { useTodoListContract, type TodoList, type TodoItem as TodoItemType } from "@/hooks/useTodoList";
-import { WalletConnect } from "@/components/WalletConnect";
+import { OnchainWallet } from "@/components/OnchainWallet";
 import { TodoListCard } from "@/components/TodoListCard";
 import { TodoListForm } from "@/components/TodoListForm";
 import { TodoItemForm } from "@/components/TodoItemForm";
@@ -15,6 +16,7 @@ import { formatAddress, formatDate } from "@/lib/utils";
 type View = "home" | "my-lists" | "my-tasks" | "create-list" | "list-detail" | "create-item" | "edit-item" | "edit-list";
 
 export default function Home() {
+  const router = useRouter();
   const { address, isConnected, isCorrectChain } = useWeb3();
   const {
     useGetTotalLists,
@@ -57,12 +59,18 @@ export default function Home() {
 
   // Effects
   useEffect(() => {
+    // Redirect to landing page if not connected
+    if (!isConnected) {
+      router.push("/landing");
+      return;
+    }
+    
     // Only navigate to list-detail if we're not already on a different view
     // This prevents interfering with manual navigation
     if (selectedListId && selectedList && (currentView === "home" || currentView === "my-lists")) {
       setCurrentView("list-detail");
     }
-  }, [selectedListId, selectedList, currentView]);
+  }, [isConnected, router, selectedListId, selectedList, currentView]);
 
   // Handlers
   const handleCreateList = async (data: { name: string; description: string }) => {
@@ -139,10 +147,23 @@ export default function Home() {
   const canEditList = isOwner || hasPermission;
 
   // Render functions
-  if (!isConnected || !isCorrectChain) {
+  if (!isConnected) {
+    // This will be handled by the useEffect redirect, but keep as fallback
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <WalletConnect />
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <OnchainWallet />
+        </div>
+      </div>
+    );
+  }
+  
+  if (!isCorrectChain) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <OnchainWallet />
+        </div>
       </div>
     );
   }
@@ -153,11 +174,11 @@ export default function Home() {
         return (
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="card-hover border-lion-200 shadow-sm">
+              <Card className="card-hover border-border shadow-sm">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
                     </div>
@@ -171,11 +192,11 @@ export default function Home() {
                 </CardContent>
               </Card>
 
-              <Card className="card-hover border-lion-200 shadow-sm">
+              <Card className="card-hover border-border shadow-sm">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
@@ -228,8 +249,8 @@ export default function Home() {
           <div className="space-y-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">My Todo Lists</h1>
-                <p className="text-gray-600 mt-1">Manage and organize your tasks</p>
+                <h1 className="text-3xl font-bold text-foreground">My Todo Lists</h1>
+                <p className="text-muted-foreground mt-1">Manage and organize your tasks</p>
               </div>
               <Button
                 onClick={() => setCurrentView("create-list")}
@@ -263,13 +284,13 @@ export default function Home() {
             ) : (
               <Card className="text-center py-12">
                 <CardContent>
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No todo lists yet</h3>
-                  <p className="text-gray-600 mb-6">Get started by creating your first todo list</p>
+                  <h3 className="text-lg font-medium text-foreground mb-2">No todo lists yet</h3>
+                  <p className="text-muted-foreground mb-6">Get started by creating your first todo list</p>
                   <Button
                     onClick={() => setCurrentView("create-list")}
                     size="lg"
@@ -305,8 +326,8 @@ export default function Home() {
           <div className="space-y-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">My Assigned Tasks</h1>
-                <p className="text-gray-600 mt-1">Complete tasks assigned to you</p>
+                <h1 className="text-3xl font-bold text-foreground">My Assigned Tasks</h1>
+                <p className="text-muted-foreground mt-1">Complete tasks assigned to you</p>
               </div>
             </div>
 
@@ -326,13 +347,13 @@ export default function Home() {
             ) : (
               <Card className="text-center py-12">
                 <CardContent>
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">No pending tasks</h3>
-                  <p className="text-gray-600">You don't have any tasks assigned to you</p>
+                  <h3 className="text-lg font-medium text-foreground mb-2">No pending tasks</h3>
+                  <p className="text-muted-foreground">You don't have any tasks assigned to you</p>
                 </CardContent>
               </Card>
             )}
@@ -390,7 +411,7 @@ export default function Home() {
           <div className="space-y-8">
             {selectedList && (
               <>
-                <Card className="border-lion-200 shadow-sm">
+                <Card className="border-border shadow-sm">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -398,14 +419,14 @@ export default function Home() {
                           <h1 className="text-3xl font-bold">{selectedList.name}</h1>
                           <div className={`status-badge ${
                             selectedList.isActive
-                              ? "bg-green-100 text-green-800 border-green-200"
-                              : "bg-gray-100 text-gray-800 border-gray-200"
+                              ? "bg-success/10 text-success border-success/20"
+                              : "bg-muted text-muted-foreground border-border"
                           }`}>
                             {selectedList.isActive ? "Active" : "Inactive"}
                           </div>
                         </div>
-                        <p className="text-gray-600 text-lg">{selectedList.description}</p>
-                        <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
+                        <p className="text-muted-foreground text-lg">{selectedList.description}</p>
+                        <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
                           <span>Owner: {formatAddress(selectedList.owner)}</span>
                           <span>Created: {formatDate(selectedList.createdAt)}</span>
                         </div>
@@ -460,13 +481,13 @@ export default function Home() {
                   ) : (
                     <Card className="text-center py-12">
                       <CardContent>
-                        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg className="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                           </svg>
                         </div>
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">No items yet</h3>
-                        <p className="text-gray-600 mb-6">Start adding tasks to your todo list</p>
+                        <h3 className="text-lg font-medium text-foreground mb-2">No items yet</h3>
+                        <p className="text-muted-foreground mb-6">Start adding tasks to your todo list</p>
                         <Button
                           onClick={() => setCurrentView("create-item")}
                           size="lg"
@@ -551,29 +572,37 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-peach-900">
-      <div className="container mx-auto px-4 py-6 sm:py-8 max-w-7xl">
-        <header className="mb-8 sm:mb-10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-            <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-bistre mb-2">
-                Todo List dApp
-              </h1>
-              <p className="text-brown-600 text-base sm:text-lg">
-                Decentralized task management on Base Sepolia
-              </p>
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className={`${isConnected ? "header-compact" : ""} bg-card border-b border-border px-4 sm:px-6 transition-all duration-300`}>
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className={`w-8 h-8 bg-primary rounded-lg flex items-center justify-center ${isConnected ? "h-7 w-7" : ""}`}>
+              <svg className="w-5 h-5 text-primary-foreground" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
             </div>
-            <div className="inline-flex items-center px-4 py-2 bg-lion-900 rounded-full border border-lion-300 shadow-sm">
-              <span className="w-2 h-2 bg-lion-600 rounded-full mr-2"></span>
-              <span className="text-sm font-medium text-bistre">{formatAddress(address || "")}</span>
+            <div>
+              <h1 className={`${isConnected ? "text-lg" : "text-2xl sm:text-3xl"} font-bold text-foreground transition-all duration-300`}>Todo List dApp</h1>
+              <p className={`${isConnected ? "text-xs" : "text-xs sm:text-sm"} text-muted-foreground transition-all duration-300`}>Task management on Base Sepolia</p>
             </div>
           </div>
-        </header>
+          <OnchainWallet />
+        </div>
+      </header>
 
-        <main className="space-y-8">
-          {renderContent()}
-        </main>
-      </div>
+      <main className="flex-1">
+        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-7xl">
+          <div className="space-y-6 sm:space-y-8">
+            {renderContent()}
+          </div>
+        </div>
+      </main>
+
+      <footer className="px-4 sm:px-6 py-4 text-center border-t border-border bg-card">
+        <p className="text-xs sm:text-sm text-muted-foreground">
+          Powered by <span className="text-primary font-semibold">Base</span> and <span className="text-primary font-semibold">OnchainKit</span>
+        </p>
+      </footer>
     </div>
   );
 }

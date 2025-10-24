@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List dApp - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50 flex flex-col">
+        <!-- Header -->
+        <header class="p-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold text-gray-900">Todo List dApp</h1>
+            </div>
+            <button class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                Connect Wallet
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex items-center justify-center p-6">
+            <div class="max-w-4xl w-full space-y-12">
+                <!-- Hero Section -->
+                <div class="text-center space-y-6">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900">
+                        Manage Your Tasks
+                        <span class="block text-purple-600">On the Blockchain</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        A decentralized todo list application built on Base Sepolia. Create, manage, and track your tasks with the power of blockchain technology.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-lg text-lg transition-colors shadow-lg">
+                            Connect Wallet
+                        </button>
+                        <button class="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 font-medium py-3 px-6 rounded-lg text-lg transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Secure</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Your tasks are stored securely on the blockchain, giving you full control and ownership of your data.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Collaborative</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Assign tasks to team members and track progress together in a transparent, decentralized environment.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Fast</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Built on Base Sepolia for fast, low-cost transactions. Manage your tasks efficiently without high gas fees.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-6 text-center border-t border-gray-200 bg-white">
+            <p class="text-sm text-gray-600">
+                Powered by <span class="text-purple-600 font-semibold">Base</span> and <span class="text-purple-600 font-semibold">OnchainKit</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple wallet connection simulation
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Connect Wallet')) {
+                button.addEventListener('click', () => {
+                    alert('Wallet connection would be handled by the OnchainKit component in the actual app');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

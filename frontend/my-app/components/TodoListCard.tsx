@@ -45,7 +45,7 @@ export function TodoListCard({
               className="text-lg font-bold cursor-pointer hover:text-brown transition-colors flex items-center gap-2 text-bistre group"
               onClick={onView}
             >
-              <span className="truncate text-white">{todoList.name}</span>
+              <span className="truncate">{todoList.name}</span>
               <svg className="w-4 h-4 text-brown-400 group-hover:text-brown group-hover:translate-x-0.5 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
